@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest --watchAll",
     "testcheck": "jest --detectOpenHandles",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "echo 'No build step required for nodemon'"
   },
   "author": "pahalagedara",
   "license": "ISC",
