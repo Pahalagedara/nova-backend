@@ -14,8 +14,8 @@ router.post("/create",[checkPermission([roles.ADMIN])],async(req,res)=>{
    }
 
     try{
-        const bookData = await saveBookData(name,totalCopies,availableCopies);
-        res.status(201).send({ message: "Book is added successfully.",book: bookData});
+        const saveData = await saveBookData(name,totalCopies,availableCopies);
+        res.status(201).send({ message: "Book is added successfully.",saveData: saveData});
     }catch(err){
         console.log(err)
 
@@ -33,7 +33,6 @@ router.delete("/delete/:id",[checkPermission([roles.ADMIN])],async(req,res)=>{
     }
 
     try{
-        console.log(id);
         const book = await findBookDataById(id);
 
         if(!book){

@@ -33,9 +33,12 @@ afterAll(async () => {
 
 //testing code
 
-var userToken;
-var adminToken;
-var bookId="664485fa7d962abee7106a32";
+var userToken; //auto changed
+var adminToken; //auto changed
+var bookId="664485fa7d962abee7106a32"; //auto changed
+var borrowBookId="664485fa7d962abee7106a32"; //auto changed
+var borrowId="6644ad8e91b3ed8a039a8c25";
+var userId="66446cb00b376e5954d7f281";
 
 describe("user route",() => {
     // it("Create user with new data | /user/create-user",() => {
@@ -216,7 +219,7 @@ describe("book route",() => {
                 expect(response.body).toEqual(
                     {
                         message: "Book is added successfully.",
-                        book: expect.any(Object)
+                        saveData: expect.any(Object)
                     }
                 )
             });
@@ -246,8 +249,10 @@ describe("book route",() => {
                 expect(response.body).toEqual(
                     {bookList: expect.any(Array)}
                 )
-                //save the book id for test the delete endpoint
+                //save the book id for test the </delete> endpoint
                 bookId = response.body.bookList[0]._id;
+                //save the book id for test the </borrow> endpoint
+                borrowBookId = response.body.bookList[1]._id;
                 
             });
     })
@@ -304,5 +309,66 @@ describe("book route",() => {
                     }
                 )
             });
+    })
+})
+
+describe("borrowings route",() => {
+    it("Borrow Book | /borrow",() => {
+        return request(app)
+        .post("/borrow")
+        .set('Authorization', `bearer ${userToken}`)
+        .send({bookId: borrowBookId})
+        .expect(200)
+        .then(response=>{
+            expect(response.body).toEqual(
+                {
+                    message: "Successfully borrowed the book.",
+                    saveData: expect.any(Object)
+                }
+            )
+        })
+    })
+
+    it("return Book | /borrow/return/:id",() => {
+        return request(app)
+        .put(`/borrow/return/${borrowId}`)
+        .set('Authorization', `bearer ${adminToken}`)
+        .expect(200)
+        .then(response=>{
+            expect(response.body).toEqual(
+                {
+                    message: "Accepted the returned book."
+                }
+            )
+            
+        })
+    })
+
+    it("View Self Borrowings | /borrow/my-borrowings",() => {
+        return request(app)
+        .get("/borrow/my-borrowings")
+        .set('Authorization', `bearer ${userToken}`)
+        .expect(200)
+        .then(response=>{
+            expect(response.body).toEqual(
+                { 
+                    borrowingList: expect.any(Array)
+                }
+            )
+        })
+    })
+
+    it("View Borrowings by User | /borrow/all/${id}",() => {
+        return request(app)
+        .get(`/borrow/all/${userId}`)
+        .set('Authorization', `bearer ${adminToken}`)
+        .expect(200)
+        .then(response=>{
+            expect(response.body).toEqual(
+                { 
+                    borrowingList: expect.any(Array)
+                }
+            )
+        })
     })
 })

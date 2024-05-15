@@ -8,39 +8,35 @@ var {checkPermission} = require("../../middlewares/auth.middlewares");
 
 router.post("/create-user",async(req,res) => {
 
-     let {email,password,name,type} = req.body;
+     let {email,password,name} = req.body;
      // Validate request
-     if (!email && !password && !name && !type) {
+     if (!email && !password && !name) {
           res.status(400).send({ message: "Content can not be empty!" });
           return;
      }
 
-     if(type==roles.USER){
-          try{
+     try{
 
-               // Check if an admin account already exists
-               const existingUser = await findUserDataByEmail(email);
+          // Check if an admin account already exists
+          const existingUser = await findUserDataByEmail(email);
 
-               if (existingUser){
-                    res.status(406).send({ message: "It looks like you already have an account with us. Please log in." });
-                    return;
-               }
-
-               const hashcode = await hashPassword(password); 
-               const authData = await saveAuthData(email,hashcode);
-               const userData = await saveUserData(authData._id,name,type);
-               const response = {
-                    _id: userData._id,
-                    email: userData.authId,
-                    name: userData.name,
-                    type: userData.type,
-               }
-               res.status(201).send(response);
+          if (existingUser){
+               res.status(406).send({ message: "It looks like you already have an account with us. Please log in." });
+               return;
           }
-          catch(err){
-               res.status(400).send(`error - ${err}`);
+
+          const hashcode = await hashPassword(password); 
+          const authData = await saveAuthData(email,hashcode);
+          const userData = await saveUserData(authData._id,name,roles.USER);
+          const response = {
+               _id: userData._id,
+               email: userData.authId,
+               name: userData.name,
+               type: userData.type,
           }
-     }else{
+          res.status(201).send(response);
+     }
+     catch(err){
           res.status(400).send(`error - ${err}`);
      }
 })
