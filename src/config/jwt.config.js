@@ -1,1 +1,1 @@
-module.exports = { SECRETKEY: "secretkeyappearshere"}
+module.exports = { SECRETKEY:  process.env.SECRET_KEY || "secretkeyappearshere" }
