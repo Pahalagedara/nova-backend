@@ -1,8 +1,6 @@
 const dbConfig = require("../config/db.config.js");
 
 const mongoose = require("mongoose");
-const { ObjectId } = require('mongodb');
-
 mongoose.Promise = global.Promise;
 
 const db = {};

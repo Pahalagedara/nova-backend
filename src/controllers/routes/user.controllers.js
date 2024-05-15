@@ -1,7 +1,7 @@
 var router = require("express").Router();
-
 var {encodeJWT,decodeJWT} = require("../../functions/jwt.functions");
 var {passwordCompare, hashPassword} = require("../../functions/common.functions");
+var roles = require("../../constants/roles.constant");
 var {saveUserData,findUserDataByEmail,updateUserToAdmin,deleteUserData} = require("../../services/user.services");
 var {saveAuthData,findAuthDataByEmail,deleteAuthData} = require("../../services/auth.services");
 var {checkPermission} = require("../../middlewares/auth.middlewares");
@@ -15,7 +15,7 @@ router.post("/create-user",async(req,res) => {
           return;
      }
 
-     if(type=='user'){
+     if(type==roles.USER){
           try{
 
                // Check if an admin account already exists
@@ -45,7 +45,7 @@ router.post("/create-user",async(req,res) => {
      }
 })
 
-router.post("/create-admin",[checkPermission(['admin'])],async(req,res) => {
+router.post("/create-admin",[checkPermission([roles.ADMIN])],async(req,res) => {
 
      let {email} = req.body;
 
@@ -72,7 +72,7 @@ router.post("/create-admin",[checkPermission(['admin'])],async(req,res) => {
 })
 
 
-router.delete("/delete",[checkPermission(['admin','user'])],async(req,res) => {
+router.delete("/delete",[checkPermission([roles.ADMIN,roles.USER])],async(req,res) => {
 
      try{
           const token = req.headers.authorization.split(' ')[1];

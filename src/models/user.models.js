@@ -7,8 +7,7 @@ module.exports = (mongoose)=> {
       },
       { timestamps: false }
     );
-  
-  
+
     const User = mongoose.model("user", schema);
     return User;
   };

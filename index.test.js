@@ -36,10 +36,6 @@ afterAll(async () => {
 var userToken;
 var adminToken;
 
-
-
-
-
 describe("user route",() => {
     // it("Create user with new data | /user/create-user",() => {
     //     return request(app)
@@ -205,3 +201,70 @@ describe("user route",() => {
 })
 
 
+describe("book route",() => {
+    it("create book | /book/create",() => {
+        return request(app)
+            .post('/book/create')
+            .set('Authorization', `bearer ${adminToken}`)
+            .expect(201)
+            .then((response)=>{
+                expect(response.body).toEqual(
+                    {
+                        message: "Book is added successfully."
+                    }
+                )
+            });
+    })
+
+    it("create book unauthorized | /book/create",() => {
+        return request(app)
+            .post('/book/create')
+            .set('Authorization', `bearer ${userToken}`)
+            .expect(401)
+            .then((response)=>{
+                expect(response.body).toEqual(
+                    {
+                        error: 'Access denied.'
+                    }
+                )
+            });
+    })
+
+    it("delete book | /book/delete",() => {
+        return request(app)
+            .delete('/book/delete')
+            .set('Authorization', `bearer ${adminToken}`)
+            .expect(200)
+            .then((response)=>{
+                expect(response.body).toEqual(
+                    {
+                        message: "Book is deleted successfully."
+                    }
+                )
+            });
+    })
+
+    it("delete book unauthorized | /book/delete",() => {
+        return request(app)
+            .delete('/book/delete')
+            .set('Authorization', `bearer ${userToken}`)
+            .expect(401)
+            .then((response)=>{
+                expect(response.body).toEqual(
+                    {
+                        error: 'Access denied.'
+                    }
+                )
+            });
+    })
+
+    it("view all book | /book/all",() => {
+        return request(app)
+            .get('/book/all')
+            .set('Authorization', `bearer ${adminToken}`)
+            .expect(200)
+            .then((response)=>{
+                expect(response.body)
+            });
+    })
+})
