@@ -35,6 +35,7 @@ afterAll(async () => {
 
 var userToken;
 var adminToken;
+var bookId="664485fa7d962abee7106a32";
 
 describe("user route",() => {
     // it("Create user with new data | /user/create-user",() => {
@@ -206,11 +207,16 @@ describe("book route",() => {
         return request(app)
             .post('/book/create')
             .set('Authorization', `bearer ${adminToken}`)
+            .send({
+                name: "rich dad poor dad", 
+                totalCopies: 12, 
+                availableCopies: 10})
             .expect(201)
             .then((response)=>{
                 expect(response.body).toEqual(
                     {
-                        message: "Book is added successfully."
+                        message: "Book is added successfully.",
+                        book: expect.any(Object)
                     }
                 )
             });
@@ -220,6 +226,7 @@ describe("book route",() => {
         return request(app)
             .post('/book/create')
             .set('Authorization', `bearer ${userToken}`)
+            .send({name: "rich dad poor dad", totalCopies: "12", availableCopies: "10"})
             .expect(401)
             .then((response)=>{
                 expect(response.body).toEqual(
@@ -230,9 +237,36 @@ describe("book route",() => {
             });
     })
 
+    it("view all book with admint token | /book/all",() => {
+        return request(app)
+            .get('/book/all')
+            .set('Authorization', `bearer ${adminToken}`)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).toEqual(
+                    {bookList: expect.any(Array)}
+                )
+                //save the book id for test the delete endpoint
+                bookId = response.body.bookList[0]._id;
+                
+            });
+    })
+
+    it("view all book with user token | /book/all",() => {
+        return request(app)
+            .get('/book/all')
+            .set('Authorization', `bearer ${userToken}`)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).toEqual(
+                    {bookList: expect.any(Array)}
+                )
+            });
+    })
+
     it("delete book | /book/delete",() => {
         return request(app)
-            .delete('/book/delete')
+            .delete(`/book/delete/${bookId}`)
             .set('Authorization', `bearer ${adminToken}`)
             .expect(200)
             .then((response)=>{
@@ -244,9 +278,23 @@ describe("book route",() => {
             });
     })
 
+    it("delete book does not exist | /book/delete",() => {
+        return request(app)
+            .delete(`/book/delete/${bookId}`)
+            .set('Authorization', `bearer ${adminToken}`)
+            .expect(400)
+            .then((response)=>{
+                expect(response.body).toEqual(
+                    {
+                        message: "The Book is already deleted."
+                    }
+                )
+            });
+    })
+
     it("delete book unauthorized | /book/delete",() => {
         return request(app)
-            .delete('/book/delete')
+            .delete(`/book/delete/${bookId}`)
             .set('Authorization', `bearer ${userToken}`)
             .expect(401)
             .then((response)=>{
@@ -255,16 +303,6 @@ describe("book route",() => {
                         error: 'Access denied.'
                     }
                 )
-            });
-    })
-
-    it("view all book | /book/all",() => {
-        return request(app)
-            .get('/book/all')
-            .set('Authorization', `bearer ${adminToken}`)
-            .expect(200)
-            .then((response)=>{
-                expect(response.body)
             });
     })
 })
