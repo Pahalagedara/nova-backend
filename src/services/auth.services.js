@@ -9,3 +9,11 @@ exports.saveAuthData = async (email, password) => {
 
     return  await auth.save();
 }
+
+exports.findAuthDataByEmail = async (email) => {
+    return Auth.findOne({_id:email})
+}
+
+exports.deleteAuthData = async (document) => {
+    return  await Auth.deleteOne(document);
+}

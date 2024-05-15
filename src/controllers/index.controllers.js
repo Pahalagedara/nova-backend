@@ -1,4 +1,4 @@
-const {checkPermission, logger} = require("../middlewares/auth.middlewares");
+const {checkPermission} = require("../middlewares/auth.middlewares");
 
 
 module.exports = app => {

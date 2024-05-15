@@ -12,10 +12,14 @@ exports.saveUserData = async (authId, name, type) => {
     return  await user.save();
 };
 
-exports.findByEmail = async (email) => {
+exports.findUserDataByEmail = async (email) => {
     return await User.findOne({authId: email})
 }
 
 exports.updateUserToAdmin = async(_id) => {
     return await User.updateOne({_id:_id},{ $set: { type: 'admin' } })
+}
+
+exports.deleteUserData = async (document) => {
+    return await User.deleteOne(document)
 }
