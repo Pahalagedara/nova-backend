@@ -1,0 +1,1035 @@
+{
+	"info": {
+		"_postman_id": "58b50677-c710-48ee-9375-8ed277e7ae85",
+		"name": "Nova REST API",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) in \"Tests\" to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12332085"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "create regular user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"shaggymangs@gmail.com\",\n    \"password\": \"lldoo\",\n    \"name\": \"Shaggy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}user/create-user",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"create-user"
+							],
+							"query": [
+								{
+									"key": "{",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"shaggymangs@gmail.com\",\n    \"password\": \"lldoo\",\n    \"name\": \"Shaggy\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}user/create-user",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"create-user"
+									],
+									"query": [
+										{
+											"key": "{",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-9qCdU4f3fyG3gIln6AvR/QgC5kU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 14:50:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6644cbb35445d2022320e6b0\",\n    \"email\": \"shaggymangs@gmail.com\",\n    \"name\": \"Shaggy\",\n    \"type\": \"user\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update regular user to admin user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"tmpahalage@gmail.com\",\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}user/create-admin",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"create-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "            {\n                \"email\":\"thilinam4@gmail.com\",\n                \"password\": \"12345869\"\n            }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}user/login",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "            {\n                \"email\":\"thilinam4@gmail.com\",\n                \"password\": \"12345869\"\n            }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "293"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"125-yB2PCMnj2oamfmuIkHHZwwiqt9s\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 14:55:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"login success\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmZjNGRkODc3OGM0ZTdjMjFjYTAiLCJlbWFpbCI6InRoaWxpbmFtNEBnbWFpbC5jb20iLCJuYW1lIjoiVGhpbGluYSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTcxNTc4NDkwNCwiZXhwIjoxNzE1Nzg4NTA0fQ.QOudAFcVMVXOrFYbTep7I_pW_ERif0pA7fGyIvxwvXA\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login regular user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "            {\n                \"email\":\"tmpahalage@gmail.com\",\n                \"password\": \"123456\"\n            }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}user/login",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "            {\n                \"email\":\"thilinam4@gmail.com\",\n                \"password\": \"12345869\"\n            }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "293"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"125-yB2PCMnj2oamfmuIkHHZwwiqt9s\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 14:55:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"login success\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmZjNGRkODc3OGM0ZTdjMjFjYTAiLCJlbWFpbCI6InRoaWxpbmFtNEBnbWFpbC5jb20iLCJuYW1lIjoiVGhpbGluYSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTcxNTc4NDkwNCwiZXhwIjoxNzE1Nzg4NTA0fQ.QOudAFcVMVXOrFYbTep7I_pW_ERif0pA7fGyIvxwvXA\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmZjNGRkODc3OGM0ZTdjMjFjYTAiLCJlbWFpbCI6InRoaWxpbmFtNEBnbWFpbC5jb20iLCJuYW1lIjoiVGhpbGluYSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTcxNTc4NDkwNCwiZXhwIjoxNzE1Nzg4NTA0fQ.QOudAFcVMVXOrFYbTep7I_pW_ERif0pA7fGyIvxwvXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}user/delete",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Create Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmZjNGRkODc3OGM0ZTdjMjFjYTAiLCJlbWFpbCI6InRoaWxpbmFtNEBnbWFpbC5jb20iLCJuYW1lIjoiVGhpbGluYSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTcxNTc4NDkwNCwiZXhwIjoxNzE1Nzg4NTA0fQ.QOudAFcVMVXOrFYbTep7I_pW_ERif0pA7fGyIvxwvXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"rich dad poor dad\", \n    \"totalCopies\": 12, \n    \"availableCopies\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}book/create",
+							"host": [
+								"{{base_url}}book"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"rich dad poor dad\", \n    \"totalCopies\": 12, \n    \"availableCopies\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/book/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"book",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "160"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a0-SroxRvMunQdjPR71Qihn+B3sTO4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 14:58:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book is added successfully.\",\n    \"saveData\": {\n        \"name\": \"rich dad poor dad\",\n        \"totalCopies\": 12,\n        \"availableCopies\": 10,\n        \"_id\": \"6644cd955445d2022320e6b4\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmZjNGRkODc3OGM0ZTdjMjFjYTAiLCJlbWFpbCI6InRoaWxpbmFtNEBnbWFpbC5jb20iLCJuYW1lIjoiVGhpbGluYSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTcxNTc4NDkwNCwiZXhwIjoxNzE1Nzg4NTA0fQ.QOudAFcVMVXOrFYbTep7I_pW_ERif0pA7fGyIvxwvXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}book/delete/6644c0f4968d9c661c3509f8",
+							"host": [
+								"{{base_url}}book"
+							],
+							"path": [
+								"delete",
+								"6644c0f4968d9c661c3509f8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"rich dad poor dad\", \n    \"totalCopies\": 12, \n    \"availableCopies\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}book/delete/6644c0f4968d9c661c3509f8",
+									"host": [
+										"{{base_url}}book"
+									],
+									"path": [
+										"delete",
+										"6644c0f4968d9c661c3509f8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-RLvgp6JV6GIvFtDoboax8bahT0Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 15:07:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book is deleted successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "View All Books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmZjNGRkODc3OGM0ZTdjMjFjYTAiLCJlbWFpbCI6InRoaWxpbmFtNEBnbWFpbC5jb20iLCJuYW1lIjoiVGhpbGluYSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTcxNTc4NDkwNCwiZXhwIjoxNzE1Nzg4NTA0fQ.QOudAFcVMVXOrFYbTep7I_pW_ERif0pA7fGyIvxwvXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}book/all",
+							"host": [
+								"{{base_url}}book"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"rich dad poor dad\", \n    \"totalCopies\": 12, \n    \"availableCopies\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}book/all",
+									"host": [
+										"{{base_url}}book"
+									],
+									"path": [
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2066"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"812-OUo+wcUTR5dMH2U9j4Vr1GGlmes\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 15:00:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"bookList\": [\n        {\n            \"_id\": \"6644c0f4968d9c661c3509f8\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c112789895ec169d7575\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c342701cec6d8079c171\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c3d96cd6b3ad0930a6bd\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c3f314020e6a78cbdf47\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c4047f8d55f4c986fd8a\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c42e25004a003dbce4eb\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c464541fa7a40be107c7\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c46f82dd068c9841ebce\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c60dbf8567c9e3c14b80\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c6741c381fb6c028a82b\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c6d8e90c9bdf667b4dc7\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c6f818b320d93d5554cf\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c738f6bdd0e2d30f57a5\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c749f246273661372c99\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c783eb43ecfe43782a5a\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c7920b10b7c09e56b535\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644c800fc9c60fab23d4305\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6644cd955445d2022320e6b4\",\n            \"name\": \"rich dad poor dad\",\n            \"totalCopies\": 12,\n            \"availableCopies\": 10,\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Borrowings",
+			"item": [
+				{
+					"name": "Borrow Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmNiMDBiMzc2ZTU5NTRkN2YyODEiLCJlbWFpbCI6InRtcGFoYWxhZ2VAZ21haWwuY29tIiwibmFtZSI6IlBhaGFsYWdlZGFyYSIsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNzE1Nzg2NTgzLCJleHAiOjE3MTU3OTAxODN9.HmL0T4wgB_S8gUVs0R2hvOH8pkt7Msdfsy6XxByOvMw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookId\": \"6644c3f314020e6a78cbdf47\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}borrow",
+							"host": [
+								"{{base_url}}borrow"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bookId\": \"6644c3f314020e6a78cbdf47\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}borrow",
+									"host": [
+										"{{base_url}}borrow"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "251"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fb-nRFHhkQj+zkyilQrpMZwEKsMDQM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 15:23:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully borrowed the book.\",\n    \"saveData\": {\n        \"user\": {\n            \"_id\": \"66446cb00b376e5954d7f281\",\n            \"name\": \"Pahalagedara\"\n        },\n        \"book\": {\n            \"_id\": \"6644c3f314020e6a78cbdf47\",\n            \"name\": \"rich dad poor dad\"\n        },\n        \"isReturned\": false,\n        \"_id\": \"6644d3675445d2022320e6c2\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Return Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmZjNGRkODc3OGM0ZTdjMjFjYTAiLCJlbWFpbCI6InRoaWxpbmFtNEBnbWFpbC5jb20iLCJuYW1lIjoiVGhpbGluYSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTcxNTc4NDkwNCwiZXhwIjoxNzE1Nzg4NTA0fQ.QOudAFcVMVXOrFYbTep7I_pW_ERif0pA7fGyIvxwvXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookId\": \"6644c3f314020e6a78cbdf47\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}borrow/return/6644bcb588037913c201f19b",
+							"host": [
+								"{{base_url}}borrow"
+							],
+							"path": [
+								"return",
+								"6644bcb588037913c201f19b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bookId\": \"6644c3f314020e6a78cbdf47\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}borrow/return/6644bcb588037913c201f19b",
+									"host": [
+										"{{base_url}}borrow"
+									],
+									"path": [
+										"return",
+										"6644bcb588037913c201f19b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-nEcicZBNw0pGCYRaGWgv1AgQ/9M\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 15:16:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Accepted the returned book.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "View Self Borrowings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmNiMDBiMzc2ZTU5NTRkN2YyODEiLCJlbWFpbCI6InRtcGFoYWxhZ2VAZ21haWwuY29tIiwibmFtZSI6IlBhaGFsYWdlZGFyYSIsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNzE1Nzg2NTgzLCJleHAiOjE3MTU3OTAxODN9.HmL0T4wgB_S8gUVs0R2hvOH8pkt7Msdfsy6XxByOvMw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}borrow/my-borrowings",
+							"host": [
+								"{{base_url}}borrow"
+							],
+							"path": [
+								"my-borrowings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}borrow/my-borrowings",
+									"host": [
+										"{{base_url}}borrow"
+									],
+									"path": [
+										"my-borrowings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "5868"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16ec-S75j12U7Uh1gscz0Fl1+Iu+CUK8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 15:25:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"borrowingList\": [\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b6974f5b28738553e928\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bc2278916bc3b630a843\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b716f25f4fdcb96b3a9a\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bcb588037913c201f19b\",\n            \"isReturned\": true,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b7445d5d3ed16c6a3d7c\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bcdccfff616be5ca853a\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b7e34cc2404019916f94\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bd6cace806ff580cc33b\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b7f0113a05afe3028a3e\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644befea750161aea30d79b\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b831cc9720b3e71292dc\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bf671432e02b50c31e91\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b89d8ae72d37c938d462\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c04cca2db68d8edd9417\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b90596effac243e2ed1d\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c05e411b206a5b39bf04\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b9120a97611743000b4f\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c07fb3869f1e6d63a0a5\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b9ccde1de718fc7b0d87\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c08dfb91da0d73b2b71e\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644ba33606a7b402570ad2e\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c0e5b1d9ca0bcc87ddfe\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644baa870829fee4d89d7ab\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c0f5968d9c661c350a00\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bac2f08995954567d702\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c113789895ec169d757d\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bad5ca9b17d9c8a1f32f\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c343701cec6d8079c179\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bb2e5ca11d6ca21dbcda\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c3d96cd6b3ad0930a6c5\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bb658d395bca3e8fb124\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c3f414020e6a78cbdf4f\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bbfacb493581c5ccc0a5\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c4057f8d55f4c986fd92\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bc2178916bc3b630a83b\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c42e25004a003dbce4f3\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bcb488037913c201f193\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c465541fa7a40be107cf\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bcdbcfff616be5ca8532\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c47082dd068c9841ebd6\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bd6bace806ff580cc333\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c60dbf8567c9e3c14b88\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644befda750161aea30d793\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c6751c381fb6c028a833\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bf661432e02b50c31e89\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c6dae90c9bdf667b4dcf\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c04bca2db68d8edd940f\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c6f918b320d93d5554d7\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c05d411b206a5b39befc\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c739f6bdd0e2d30f57ad\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c07eb3869f1e6d63a09d\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c74af246273661372ca1\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c08cfb91da0d73b2b716\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c784eb43ecfe43782a62\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c0e4b1d9ca0bcc87ddf6\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c7930b10b7c09e56b53d\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c0f4968d9c661c3509f8\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c801fc9c60fab23d430d\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c3f314020e6a78cbdf47\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644d3675445d2022320e6c2\",\n            \"isReturned\": false,\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "View Borrowings by User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ0NmZjNGRkODc3OGM0ZTdjMjFjYTAiLCJlbWFpbCI6InRoaWxpbmFtNEBnbWFpbC5jb20iLCJuYW1lIjoiVGhpbGluYSIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTcxNTc4NDkwNCwiZXhwIjoxNzE1Nzg4NTA0fQ.QOudAFcVMVXOrFYbTep7I_pW_ERif0pA7fGyIvxwvXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookId\": \"6644c3f314020e6a78cbdf47\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/borrow/all/66446cb00b376e5954d7f281",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"borrow",
+								"all",
+								"66446cb00b376e5954d7f281"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bookId\": \"6644c3f314020e6a78cbdf47\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/borrow/all/66446cb00b376e5954d7f281",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"borrow",
+										"all",
+										"66446cb00b376e5954d7f281"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "5673"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1629-1TsuSyA5/C7LbyFIB6Z5OXAiTpU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 May 2024 15:18:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"borrowingList\": [\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b6974f5b28738553e928\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bc2278916bc3b630a843\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b716f25f4fdcb96b3a9a\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bcb588037913c201f19b\",\n            \"isReturned\": true,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b7445d5d3ed16c6a3d7c\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bcdccfff616be5ca853a\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b7e34cc2404019916f94\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bd6cace806ff580cc33b\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b7f0113a05afe3028a3e\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644befea750161aea30d79b\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b831cc9720b3e71292dc\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644bf671432e02b50c31e91\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b89d8ae72d37c938d462\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c04cca2db68d8edd9417\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b90596effac243e2ed1d\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c05e411b206a5b39bf04\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b9120a97611743000b4f\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c07fb3869f1e6d63a0a5\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644b9ccde1de718fc7b0d87\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c08dfb91da0d73b2b71e\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644ba33606a7b402570ad2e\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c0e5b1d9ca0bcc87ddfe\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644baa870829fee4d89d7ab\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c0f5968d9c661c350a00\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bac2f08995954567d702\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c113789895ec169d757d\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bad5ca9b17d9c8a1f32f\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c343701cec6d8079c179\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bb2e5ca11d6ca21dbcda\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c3d96cd6b3ad0930a6c5\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bb658d395bca3e8fb124\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c3f414020e6a78cbdf4f\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bbfacb493581c5ccc0a5\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c4057f8d55f4c986fd92\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bc2178916bc3b630a83b\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c42e25004a003dbce4f3\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bcb488037913c201f193\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c465541fa7a40be107cf\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bcdbcfff616be5ca8532\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c47082dd068c9841ebd6\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bd6bace806ff580cc333\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c60dbf8567c9e3c14b88\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644befda750161aea30d793\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c6751c381fb6c028a833\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644bf661432e02b50c31e89\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c6dae90c9bdf667b4dcf\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c04bca2db68d8edd940f\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c6f918b320d93d5554d7\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c05d411b206a5b39befc\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c739f6bdd0e2d30f57ad\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c07eb3869f1e6d63a09d\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c74af246273661372ca1\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c08cfb91da0d73b2b716\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c784eb43ecfe43782a62\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c0e4b1d9ca0bcc87ddf6\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c7930b10b7c09e56b53d\",\n            \"isReturned\": false,\n            \"__v\": 0\n        },\n        {\n            \"user\": {\n                \"_id\": \"66446cb00b376e5954d7f281\",\n                \"name\": \"Pahalagedara\"\n            },\n            \"book\": {\n                \"_id\": \"6644c0f4968d9c661c3509f8\",\n                \"name\": \"rich dad poor dad\"\n            },\n            \"_id\": \"6644c801fc9c60fab23d430d\",\n            \"isReturned\": false,\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/"
+		}
+	]
+}
